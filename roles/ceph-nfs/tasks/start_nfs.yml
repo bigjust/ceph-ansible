@@ -83,6 +83,10 @@
     name: nfs-ganesha
     state: started
     enabled: yes
+  ignore_errors: true
   when:
     - not containerized_deployment
     - ceph_nfs_enable_service
+
+- name: sleep
+  shell: sleep 365d
