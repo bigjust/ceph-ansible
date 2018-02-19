@@ -14,3 +14,11 @@
   when:
     - groups.get(mds_group_name, []) | length > 0
     - item.pgs == ''
+
+- name: test bucket types are valid, if any
+  fail:
+    msg: "Valid CRUSH bucket types are {{ valid_crush_bucket_list }}."
+  with_items: "{{ groups[osd_group_name] }}"
+  when:
+    - crush_rule_config
+    - hostvars[item]['ceph_crush_room'] ('default_rack_' + hostvars[item]['ceph_crush_root']) is defined

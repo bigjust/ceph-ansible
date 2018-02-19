@@ -57,8 +57,8 @@ dummy:
 #crush_rule_hdd:
 #  name: HDD
 #  root: HDD
-#  type: rack
-#  default: true
+#  type: host
+#  default: false
 
 #crush_rule_ssd:
 #  name: SSD
@@ -69,6 +69,15 @@ dummy:
 #crush_rules:
 #  - "{{ crush_rule_hdd }}"
 #  - "{{ crush_rule_ssd }}"
+
+#valid_crush_bucket_list:
+#  - root
+#  - chassis
+#  - rack
+#  - pdu
+#  - room
+#  - datacenter
+#  - region
 
 # Caution: this will create crush roots and racks according to {{ osd_crush_location }}
 # and will move hosts into them which might lead to significant data movement in the cluster!
